@@ -7,6 +7,7 @@ import { projects } from '@/data/projects';
 import { ProjectDetail } from '@/components/ProjectDetail';
 import { ProjectList } from '@/components/ProjectList';
 import { SideProjectCard } from '@/components/SideProjectCard';
+import { AnimatedContent } from '@/components/AnimatedContent';
 
 const Portfolio = () => {
   // State management
@@ -20,6 +21,9 @@ const Portfolio = () => {
   const itemRefs = useRef<Record<number, HTMLButtonElement | null>>({});
   const [hoverRect, setHoverRect] = useState({ top: 0, height: 0, visible: false });
   const [activeRect, setActiveRect] = useState({ top: 0, height: 0, visible: false });
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const [tabIndicator, setTabIndicator] = useState({ left: 0, width: 0 });
 
   // Category mapping
   const categoryMap: Record<ProjectTab, string> = {
@@ -39,9 +43,16 @@ const Portfolio = () => {
 
   // Effects
   useEffect(() => {
+    setIsTransitioning(true);
     setSelectedProject(null);
     setViewMode('preview');
     setHoveredId(null);
+    
+    const timer = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 300);
+    
+    return () => clearTimeout(timer);
   }, [projectTab]);
 
   useEffect(() => {
@@ -98,6 +109,28 @@ const Portfolio = () => {
 
   useEffect(() => {
     setHoveredId(null);
+  }, []);
+
+  // Update tab indicator position
+  useLayoutEffect(() => {
+    const activeTab = tabRefs.current[projectTab];
+    if (activeTab) {
+      setTabIndicator({
+        left: activeTab.offsetLeft,
+        width: activeTab.offsetWidth,
+      });
+    }
+  }, [projectTab]);
+
+  // Initialize tab indicator on mount
+  useEffect(() => {
+    const activeTab = tabRefs.current[projectTab];
+    if (activeTab) {
+      setTabIndicator({
+        left: activeTab.offsetLeft,
+        width: activeTab.offsetWidth,
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -224,7 +257,17 @@ const Portfolio = () => {
             <div className="w-full max-w-[1100px] flex flex-col">
               {/* Sub Navigation */}
               <div className="px-4 sm:px-6 md:px-8 pt-3 md:pt-4 pb-5 md:pb-6">
-                <div className="flex items-start justify-start gap-8 sm:gap-12 md:gap-16 flex-wrap">
+                <div className="relative flex items-start justify-start gap-8 sm:gap-12 md:gap-16 flex-wrap">
+                  {/* Animated underline indicator */}
+                  <span
+                    className="absolute bottom-0 h-0.5 bg-gray-800 transition-all duration-300 ease-out rounded-full"
+                    style={{
+                      left: `${tabIndicator.left}px`,
+                      width: `${tabIndicator.width}px`,
+                      transform: 'translateY(8px)',
+                    }}
+                  />
+                  
                   {(
                     [
                       ['web', 'Web Design'],
@@ -236,15 +279,17 @@ const Portfolio = () => {
                     return (
                       <button
                         key={key}
+                        ref={(el) => {
+                          tabRefs.current[key] = el;
+                        }}
                         type="button"
                         onClick={() => setProjectTab(key)}
                         className={[
-                          'relative text-[16px] font-medium transition-colors',
-                          active ? 'text-gray-900' : 'text-gray-500 hover:text-gray-800',
+                          'relative text-[16px] font-medium transition-all duration-200',
+                          active ? 'text-gray-900 scale-105' : 'text-gray-500 hover:text-gray-800 hover:scale-102',
                         ].join(' ')}
                       >
                         {label}
-                        {active && <span className="absolute left-1/2 -translate-x-1/2 top-full mt-2 h-1 w-1 rounded-full bg-gray-600" />}
                       </button>
                     );
                   })}
@@ -269,9 +314,12 @@ const Portfolio = () => {
 
                   <main className="flex-1 md:overflow-y-auto bg-gray-50 custom-scrollbar">
                     {hoverProject && viewMode === 'preview' && (
-                      <div className="hidden md:block">
+                      <div className="hidden md:block animate-fade-in-up" style={{ animationDuration: '0.3s' }}>
                         <div className="p-4 sm:p-6 md:p-8">
-                          <div className="mx-auto w-full md:w-[700px]" style={{ maxWidth: '700px', padding: '12px', backgroundColor: hoverProject.previewBorderColor || '#E5E7EB', borderRadius: '24px' }}>
+                          <div 
+                            className="mx-auto w-full md:w-[700px] transition-transform duration-200 hover:scale-[1.01]" 
+                            style={{ maxWidth: '700px', padding: '12px', backgroundColor: hoverProject.previewBorderColor || '#E5E7EB', borderRadius: '24px' }}
+                          >
                             {hoverProject.image?.toLowerCase().endsWith('.mp4') || hoverProject.image?.toLowerCase().endsWith('.webm') ? (
                               <video
                                 src={hoverProject.image}
@@ -299,8 +347,8 @@ const Portfolio = () => {
                 <div className="flex-1 px-4 sm:px-6 md:px-8 pb-12 md:pb-16">
                   <div className="mt-6 md:mt-8">
                     <div className="flex flex-wrap gap-6">
-                      {filteredProjects.map((project) => (
-                        <SideProjectCard key={project.id} project={project} />
+                      {filteredProjects.map((project, index) => (
+                        <SideProjectCard key={project.id} project={project} index={index} />
                       ))}
                     </div>
                   </div>
@@ -322,9 +370,12 @@ const Portfolio = () => {
 
                   <main className="flex-1 md:overflow-y-auto bg-gray-50 custom-scrollbar">
                     {hoverProject && viewMode === 'preview' && (
-                      <div className="hidden md:block">
+                      <div className="hidden md:block animate-fade-in-up" style={{ animationDuration: '0.3s' }}>
                         <div className="p-4 sm:p-6 md:p-8">
-                          <div className="mx-auto w-full md:w-[700px]" style={{ maxWidth: '700px', padding: '12px', backgroundColor: hoverProject.previewBorderColor || '#E5E7EB', borderRadius: '24px' }}>
+                          <div 
+                            className="mx-auto w-full md:w-[700px] transition-transform duration-200 hover:scale-[1.01]" 
+                            style={{ maxWidth: '700px', padding: '12px', backgroundColor: hoverProject.previewBorderColor || '#E5E7EB', borderRadius: '24px' }}
+                          >
                             {hoverProject.image?.toLowerCase().endsWith('.mp4') || hoverProject.image?.toLowerCase().endsWith('.webm') ? (
                               <video
                                 src={hoverProject.image}

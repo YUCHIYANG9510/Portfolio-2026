@@ -57,7 +57,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({
           />
 
           <div className="space-y-3 relative">
-            {projects.map((project) => {
+            {projects.map((project, index) => {
               const isActive = selectedProject?.id === project.id;
 
               return (
@@ -72,10 +72,14 @@ export const ProjectList: React.FC<ProjectListProps> = ({
                   className={[
                     'w-full text-left p-5 rounded-2xl relative z-10',
                     'bg-transparent',
-                    'transition-colors',
+                    'transition-all duration-200',
                     'cursor-pointer',
+                    'animate-fade-in-up',
                     isActive ? 'text-gray-900' : 'text-gray-800 hover:text-gray-900',
                   ].join(' ')}
+                  style={{
+                    animationDelay: `${index * 50}ms`,
+                  }}
                 >
                   <h3 className="font-semibold text-[16px] mb-1 text-gray-800">{project.title}</h3>
                   <p className={['text-sm transition-colors', isActive ? 'text-gray-600' : 'text-gray-500'].join(' ')}>
