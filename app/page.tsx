@@ -156,6 +156,12 @@ const Portfolio = () => {
     setViewMode('preview');
   };
 
+  const handleProjectChange = (newProject: Project) => {
+    setSelectedProject(newProject);
+    // Keep in detail view
+    setViewMode('detail');
+  };
+
   const handleCopyEmail = () => {
     const email = 'daisyyang9510@gmail.com';
     navigator.clipboard.writeText(email).then(() => {
@@ -199,7 +205,12 @@ const Portfolio = () => {
 
       {/* Project Detail View */}
       {selectedProject && viewMode === 'detail' && (
-        <ProjectDetail project={selectedProject} onBack={handleBackToPreview} />
+        <ProjectDetail 
+          project={selectedProject} 
+          onBack={handleBackToPreview}
+          projects={filteredProjects}
+          onProjectChange={handleProjectChange}
+        />
       )}
 
       {/* Main Layout */}
