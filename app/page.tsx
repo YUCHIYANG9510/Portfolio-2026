@@ -244,9 +244,9 @@ const Portfolio = () => {
             <div className="flex justify-center">
               <div className="w-full max-w-[1100px] px-4 sm:px-6 md:px-8 py-2 md:py-2">
                 <div className="max-w-[700px]">
-                  <p className="text-base text-gray-600 leading-8 mb-4">
-                    I'm currently a founding design engineer at <span className="font-bold">Interfere</span>, where we're building the self-healing layer of the internet. I care deeply about craft and quality, and I like to make people feel something through my work.
-                  </p>
+                  <p className="text-base text-gray-600 leading-8 mb-5">
+                      I'm a <span className="font-bold">freelance designer</span> focused on web and product design. <br />I care deeply about details and quality, and I like to create designs that shape how people experience the world.               
+                   </p>
                 </div>
               </div>
             </div>
