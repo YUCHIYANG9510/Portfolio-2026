@@ -119,7 +119,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, p
             {project.detailImages.map((image, index) => (
               <div 
                 key={index} 
-                className="bg-gray-100 rounded-2xl overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-md"
+                className="bg-gray-100 rounded-2xl overflow-hidden border border-gray-100"
               >
                 {image?.toLowerCase().endsWith('.mp4') || image?.toLowerCase().endsWith('.webm') ? (
                   <video

@@ -13,7 +13,7 @@ const Portfolio = () => {
   // State management
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
-  const [projectTab, setProjectTab] = useState<ProjectTab>('web');
+  const [projectTab, setProjectTab] = useState<ProjectTab>('uiux');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [viewMode, setViewMode] = useState<'preview' | 'detail'>('preview');
   const [isMobileViewport, setIsMobileViewport] = useState(false);
@@ -281,8 +281,8 @@ const Portfolio = () => {
                   
                   {(
                     [
-                      ['web', 'Web Design'],
                       ['uiux', 'UI/UX'],
+                      ['web', 'Web Design'],
                       ['sideproject', 'Side Project'],
                     ] as const
                   ).map(([key, label]) => {
@@ -359,7 +359,7 @@ const Portfolio = () => {
                   <div className="mt-6 md:mt-8">
                     <div className="flex flex-wrap gap-6">
                       {filteredProjects.map((project, index) => (
-                        <SideProjectCard key={project.id} project={project} index={index} />
+                        <SideProjectCard key={project.id} project={project} index={index} onClick={handleProjectClick} />
                       ))}
                     </div>
                   </div>
