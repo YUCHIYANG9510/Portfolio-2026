@@ -10,8 +10,9 @@ interface ProjectListProps {
   itemRefs: React.MutableRefObject<Record<number, HTMLButtonElement | null>>;
   hoverRect: { top: number; height: number; visible: boolean };
   activeRect: { top: number; height: number; visible: boolean };
-  isMobileViewport: boolean;
-  viewMode: 'preview' | 'detail';
+  // Keep these for mobile layout compat in parent component
+  isMobileViewport?: boolean;
+  viewMode?: 'preview' | 'detail';
 }
 
 export const ProjectList: React.FC<ProjectListProps> = ({
@@ -33,8 +34,9 @@ export const ProjectList: React.FC<ProjectListProps> = ({
         isMobileViewport && viewMode === 'detail' ? 'hidden md:flex' : '',
       ].join(' ')}
     >
-      <div className="flex-1 md:overflow-y-auto nav-scrollbar">
-        <div className="p-4 sm:p-6 relative">
+      <div className="flex-1 md:overflow-hidden">
+        <div className="p-4 sm:px-6 py-4 relative">
+          {/* Active highlight background */}
           <div
             className="absolute left-4 sm:left-6 right-4 sm:right-6 rounded-2xl bg-black/[0.06] pointer-events-none transition-opacity duration-75"
             style={{
@@ -44,6 +46,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({
             }}
           />
 
+          {/* Hover highlight border */}
           <div
             className="absolute left-4 sm:left-6 right-4 sm:right-6 rounded-2xl transition-[transform,height,opacity] duration-150 ease-out pointer-events-none"
             style={{
@@ -56,6 +59,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({
             }}
           />
 
+          {/* All projects listed — no category tabs */}
           <div className="space-y-3 relative">
             {projects.map((project, index) => {
               const isActive = selectedProject?.id === project.id;
@@ -75,21 +79,17 @@ export const ProjectList: React.FC<ProjectListProps> = ({
                     'transition-all duration-200',
                     'cursor-pointer',
                     'animate-fade-in-up',
-                    isActive ? 'text-gray-900' : 'text-gray-800 hover:text-gray-900',
                   ].join(' ')}
-                  style={{
-                    animationDelay: `${index * 50}ms`,
-                  }}
+                  style={{ color: isActive ? '#737373' : '#737373', animationDelay: `${index * 50}ms` }}
                 >
-                  <h3 className="font-semibold text-[16px] mb-1 text-gray-800">{project.title}</h3>
-                  <p className={['text-sm transition-colors', isActive ? 'text-gray-600' : 'text-gray-500'].join(' ')}>
-                    {project.year} · {project.category}
-                  </p>
+                  <h3 className="font-normal text-[16px] mb-2" style={{ color: '#737373' }}>{project.title}</h3>
+                  <p className="text-sm text-gray-500" style={{ color: '#737373' }}>{project.year}・{project.category}</p>
                 </button>
               );
             })}
+
             {projects.length === 0 && (
-              <div className="px-2 py-6 text-sm text-gray-500">目前這個分類還沒有專案（你之後可以再補上）。</div>
+              <div className="px-2 py-6 text-sm" style={{ color: '#737373' }}>No projects yet.</div>
             )}
           </div>
         </div>
