@@ -24,6 +24,10 @@ body {
   font-family: var(--font-geist), system-ui, -apple-system, sans-serif;
 }
 
+.bg-gray-50 {
+  background-color: #F8F8F7 !important;
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;

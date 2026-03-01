@@ -34,8 +34,8 @@ export const ProjectList: React.FC<ProjectListProps> = ({
         isMobileViewport && viewMode === 'detail' ? 'hidden md:flex' : '',
       ].join(' ')}
     >
-      <div className="flex-1 md:overflow-hidden">
-        <div className="p-4 sm:px-6 py-4 relative">
+      <div className="flex-1 md:overflow-hidden pb-8">
+        <div className="p-4 sm:px-6 py-4 relative pb-10">
           {/* Active highlight background */}
           <div
             className="absolute left-4 sm:left-6 right-4 sm:right-6 rounded-2xl bg-black/[0.06] pointer-events-none transition-opacity duration-75"
@@ -82,7 +82,7 @@ export const ProjectList: React.FC<ProjectListProps> = ({
                   ].join(' ')}
                   style={{ color: isActive ? '#737373' : '#737373', animationDelay: `${index * 50}ms` }}
                 >
-                  <h3 className="font-normal text-[16px] mb-2" style={{ color: '#737373' }}>{project.title}</h3>
+                  <h3 className="font-normal text-[16px] mb-1" style={{ color: '#1A1B1F' }}>{project.title}</h3>
                   <p className="text-sm text-gray-500" style={{ color: '#737373' }}>{project.year}・{project.category}</p>
                 </button>
               );

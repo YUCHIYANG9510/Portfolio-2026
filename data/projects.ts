@@ -22,7 +22,8 @@ export const projects: Project[] = [
         type: 'two-column',
         left: [
           { label: 'My Role', value: 'Product Designer' },
-          { label: 'Team', value: 'Brian Hsieh - Project Manager\nGracie Hsieh - UX Designer\nTeddy - Android Engineer' },
+          { label: 'Team', value: 'Brian - Project Manager\nGracie - UX Designer\nRichard - VP Engineering' },
+          { label: 'Brief', value: 'Improve the visual consistency and classroom usability of BenQ\'s built-in whiteboard software to strengthen hardware differentiation.' },
           { label: 'Platforms', value: 'Web, Android, iOS' },
         ],
         right: {
@@ -43,31 +44,93 @@ export const projects: Project[] = [
       {
         type: 'text',
         heading: 'Business Goals',
-        body: '· Drive feature adoption by differentiating EZWrite from competitors through superior UX on interactive flat panels.\n· Improve teacher onboarding efficiency so classrooms can run the software with zero IT support.\n· Establish a scalable design system to double development efficiency across future product lines.',
+      },
+      {
+        type: 'text',
+        icon: '/icon/01.svg',  
+        iconSize: 44, 
+        subtitle: 'Strengthen hardware sales through software differentiation',
+        body: 'BenQ\'s primary business is hardware. EZWrite 6 is the built-in whiteboard software on BenQ\'s Interactive Flat Panels (IFPs). The goal was to make the software experience compelling enough to be a genuine reason to choose BenQ displays over competitors — not just a bundled afterthought.',
+        gap: 16,
+      },
+      {
+        type: 'text',
+        icon: '/icon/02.svg',  
+        iconSize: 44, 
+        subtitle: 'Improve teaching workflows across the full class lifecycle',
+        body: 'The software needed to serve teachers before class (lesson preparation), during class (content delivery and student engagement), and after class (material accessibility and review). Every feature decision was evaluated against this three-stage framework.',
+        gap: 16,
+      },
+      {
+        type: 'text',
+        icon: '/icon/03.svg',  
+        iconSize: 44, 
+        subtitle: 'Establish a scalable, consistent product foundation',
+        body: 'With a growing feature set and multiple contributors to the codebase and design files over time, the product needed a shared design language — one that could support faster iteration without accumulating visual debt.',
+        gap: 16,
       },
       // The Challenge
       {
         type: 'text',
         heading: 'The Challenge',
-        body: 'A fragmented interface across Windows, Mac, and Android meant inconsistent interaction patterns that confused both new and experienced teachers. Core tools lacked visual hierarchy, making them hard to discover on large 75"–86" displays.\n\nA missing design system forced developers to make ad-hoc decisions, slowing shipping speed and accumulating visual debt.',
       },
-      // Key Features
+      {
+        type: 'text',
+        icon: '/icon/01.svg',  
+        iconSize: 44, 
+        subtitle: 'A fragmented design foundation',
+        body: 'EZWrite 6 had been shaped by multiple designers before me. There was no unified component library, no naming conventions, and no single source of truth. Every time I needed to design a new feature, I\'d spend close to thirty minutes just tracking down existing dialogs — checking what sizes existed, which had already been built by engineering, making sure I wasn\'t creating duplicates or introducing inconsistencies. The time spent searching routinely outweighed the time spent designing.',
+        gap: 16,
+      },
+      {
+        type: 'text',
+        icon: '/icon/02.svg',  
+        iconSize: 44, 
+        subtitle: 'A non-standard interaction environment',
+        body: 'This wasn\'t a typical screen. BenQ\'s interactive displays are wall-mounted panels — physically large, operated by teachers standing in front of a classroom. Buttons placed too high become unreachable. Toolbars that work fine on a laptop screen become obstacles when a teacher is mid-lesson, arms extended, students watching. The physical reality of the classroom shaped every layout decision in ways that standard mobile or web heuristics simply don\'t anticipate.',
+        gap: 16,
+      },
+      // Key Features - Presentation Mode
       { type: 'text', heading: 'Key Features', body: 'Rather than expanding features indiscriminately, each feature addressed a specific classroom scenario.' },
-      { type: 'text', subtitle: 'Presentation Mode', body: 'Giving structure to the teaching flow.\nEnables teachers and students to deliver content sequentially while maintaining the flexibility of a freeform whiteboard. The interface was optimized to minimize visual obstruction while preserving large touch targets for reliable interaction.'},
+      { type: 'text', 
+        icon: '/icon/presentation-mode.svg',
+        iconSize: 44,
+        subtitle: 'Presentation Mode', 
+        body: 'Giving structure to the teaching flow.\nEnables teachers and students to deliver content sequentially while maintaining the flexibility of a freeform whiteboard. The interface was optimized to minimize visual obstruction while preserving large touch targets for reliable interaction.',
+        gap: 16,
+      },
       { type: 'media', src: '/ezw/03_ezw.mp4', alt: 'Presentation Mode', gap: 16},
       { type: 'text', body: 'Balancing clarity and accessibility was key on large displays.', gap: 16},
       { type: 'media', src: '/ezw/04_ezw.jpg', alt: 'presentation mode toolbar', gap: 16},
+
+      // Key Features - Spotlight
+      { type: 'text', 
+        icon: '/icon/spotlight.svg',
+        iconSize: 44,
+        subtitle: 'Spotlight & Revealer', 
+        body: 'Guiding classroom focus through spatial interaction.\nAllows teachers to highlight or gradually reveal content, guiding student attention without interrupting teaching flow. The toolbar was repositioned vertically to improve reachability on large screens.',
+        gap: 40,
+      },
+      { type: 'media', src: '/ezw/05_ezw.mp4', alt: 'Spotlight & Revealer', gap: 16},
+      { type: 'text', body: 'Physical ergonomics directly influenced interface layout.', gap: 16},
+      { type: 'media', src: '/ezw/06_ezw.jpg', alt: 'spotlight toolbar', gap: 16},
+
+      // Other Features
+      { type: 'text', 
+        subtitle: 'Other Features',
+        gap: 40},
+      { type: 'media', src: '/ezw/07_ezw.jpg', alt: 'other features', gap: 16},
       // Results
       {
         type: 'text',
         heading: 'Results',
-        body: 'EZWrite 6 launched in 2024 and shipped to 40+ markets. Teacher onboarding time dropped significantly due to clearer tool discovery. The design system reduced front-end rework and is now shared across 3 BenQ product lines.',
+        body: '・Contributed to a $12M U.S. education tender\n・Strengthened BenQ\’s positioning in U.S., India, and Germany markets\n・Improved product consistency and iteration scalability through systemization',
       },
       // Key Takeaways
       {
         type: 'text',
         heading: 'Key Takeaways',
-        body: 'Designing for large-screen, shared environments requires rethinking standard mobile/desktop interaction patterns. Legibility, touch target size, and tool discoverability all need to be recalibrated for the classroom context.\n\nBuilding a design system in parallel with feature work is difficult but invaluable—it pays dividends much faster than expected once developers adopt it consistently.',
+        body: 'Designing for large screens taught me that physical space changes interaction strategy entirely.\nUX is not just about interface clarity — it’s about aligning digital tools with real human movement.',
       },
     ],
   },
@@ -156,7 +219,7 @@ export const projects: Project[] = [
     year: '2025',
     category: 'Side Project',
     url: 'https://shorturl.at/I1YPG',
-    role: 'Product Builder',
+    role: 'Personal Project',
     date: 'Apr. 2025 - Present',
     intro: 'The Pigeon Book is a self-initiated product I built from 0 to 1.',
     tags: ['Side Project'],
@@ -169,9 +232,8 @@ export const projects: Project[] = [
         type: 'two-column',
         left: [
           { label: 'My Role', value: 'Product Builder (Solo)' },
-          { label: 'Timeline', value: 'Apr. 2025 – Present' },
+          { label: 'Team', value: 'Daisy Yang - Solo Designer & Developer' },
           { label: 'Platform', value: 'iOS' },
-          { label: 'Stack', value: 'SwiftUI · AI-assisted' },
         ],
         right: {
           heading: 'Overview',
@@ -181,10 +243,8 @@ export const projects: Project[] = [
       { type: 'media', src: '/pigeon-book/01_pigeon.jpg' },
       { type: 'media', src: '/pigeon-book/02_pigeon.jpg' },
       { type: 'media', src: '/pigeon-book/03_pigeon.mp4' },
-      {
-        type: 'grid',
-        items: [{ src: '/pigeon-book/04_pigeon.jpg' }, { src: '/pigeon-book/05_pigeon.mp4' }],
-      },
+      { type: 'media', src: '/pigeon-book/04_pigeon.jpg' },
+      { type: 'media', src: '/pigeon-book/05_pigeon.mp4' },
       { type: 'media', src: '/pigeon-book/06_pigeon.jpg' },
     ],
   },

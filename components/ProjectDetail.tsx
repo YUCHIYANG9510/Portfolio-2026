@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowUp, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowUp, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AppleLogo } from './AppleLogo';
 import { Project, SectionBlock } from '@/types';
 
@@ -33,19 +33,48 @@ const GridBlock: React.FC<{ items: { src: string; alt?: string }[]; title: strin
   </div>
 );
 
-const TextBlock: React.FC<{ heading?: string; subtitle?: string; body?: string }> = ({ heading, subtitle, body }) => (
-  <div className="space-y-2">
-    {heading && (
-      <h2 style={{ fontSize: '20px', fontWeight: 600, color: '#1A1B1F', lineHeight: '1.4' }}>{heading}</h2>
-    )}
-    {subtitle && (
-      <p style={{ fontSize: '16px', fontWeight: 500, color: '#1A1B1F', lineHeight: '1.8' }}>{subtitle}</p>
-    )}
-    {body && (
-      <p style={{ fontSize: '14px', fontWeight: 400, color: '#737373', lineHeight: '1.8' }} className="whitespace-pre-line">{body}</p>
-    )}
-  </div>
-);
+const TextBlock: React.FC<{
+  heading?: string;
+  subtitle?: string;
+  body?: string;
+  icon?: string; // SVG file URL (e.g. "/icons/star.svg") 或 inline SVG string
+  iconSize?: number; // px，預設 16
+}> = ({ heading, subtitle, body, icon, iconSize = 16 }) => {
+  const isInlineSVG = icon?.trimStart().startsWith('<');
+
+  return (
+    <div className="space-y-2">
+      {heading && (
+        <h2 style={{ fontSize: '20px', fontWeight: 600, color: '#1A1B1F', lineHeight: '1.4' }}>{heading}</h2>
+      )}
+      {subtitle && (
+        <div className="flex items-center gap-2">
+          {icon && (
+            isInlineSVG ? (
+              <span
+                className="shrink-0 flex items-center justify-center"
+                style={{ width: iconSize, height: iconSize, color: '#737373' }}
+                dangerouslySetInnerHTML={{ __html: icon }}
+              />
+            ) : (
+              <img
+                src={icon}
+                alt=""
+                style={{ width: iconSize, height: iconSize }}
+                className="shrink-0"
+                draggable="false"
+              />
+            )
+          )}
+          <p style={{ fontSize: '16px', fontWeight: 500, color: '#1A1B1F', lineHeight: '1.8' }}>{subtitle}</p>
+        </div>
+      )}
+      {body && (
+        <p style={{ fontSize: '14px', fontWeight: 400, color: '#737373', lineHeight: '1.8' }} className="whitespace-pre-line">{body}</p>
+      )}
+    </div>
+  );
+};
 
 const MetadataBlock: React.FC<{ items: { label: string; value: string }[] }> = ({ items }) => (
   <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-y border-gray-200 py-6">
@@ -67,8 +96,8 @@ const TwoColumnBlock: React.FC<{
     <div className="flex flex-col gap-6">
       {left.map((item, i) => (
         <div key={i}>
-          <p className="font-bold text-sm mb-1" style={{ color: '#1A1B1F' }}>{item.label}</p>
-          <p className="text-sm leading-6 whitespace-pre-line" style={{ color: '#737373' }}>{item.value}</p>
+          <p className="font-bold text-sm mb-2" style={{ color: '#1A1B1F' }}>{item.label}</p>
+          <p className="text-sm leading-6.5 whitespace-pre-line" style={{ color: '#737373' }}>{item.value}</p>
         </div>
       ))}
     </div>
@@ -76,9 +105,9 @@ const TwoColumnBlock: React.FC<{
     {/* Right column */}
     <div>
       {right.heading && (
-        <p className="font-bold text-sm mb-3" style={{ color: '#1A1B1F' }}>{right.heading}</p>
+        <p className="font-bold text-sm mb-2" style={{ color: '#1A1B1F' }}>{right.heading}</p>
       )}
-      <div className="text-sm leading-7 whitespace-pre-line" style={{ color: '#737373' }}>{right.body}</div>
+      <div className="text-sm leading-6.5 whitespace-pre-line" style={{ color: '#737373' }}>{right.body}</div>
     </div>
   </div>
 );
@@ -89,11 +118,11 @@ const HighlightBlock: React.FC<{ emoji?: string; heading: string; body: string }
   body,
 }) => (
   <div className="rounded-2xl border border-gray-200 bg-white p-6">
-    <div className="flex items-center gap-2 mb-3">
+    <div className="flex items-center gap-2 mb-2">
       <span className="text-base">{emoji}</span>
       <p className="font-bold text-sm" style={{ color: '#1A1B1F' }}>{heading}</p>
     </div>
-    <p className="text-sm leading-7 whitespace-pre-line" style={{ color: '#737373' }}>{body}</p>
+    <p className="text-sm leading-6.5 whitespace-pre-line" style={{ color: '#737373' }}>{body}</p>
   </div>
 );
 
@@ -104,7 +133,16 @@ const renderSection = (section: SectionBlock, index: number, projectTitle: strin
     case 'grid':
       return <GridBlock key={index} items={section.items} title={projectTitle} />;
     case 'text':
-      return <TextBlock key={index} heading={section.heading} subtitle={section.subtitle} body={section.body} />;
+      return (
+        <TextBlock
+          key={index}
+          heading={section.heading}
+          subtitle={section.subtitle}
+          body={section.body}
+          icon={section.icon}
+          iconSize={section.iconSize}
+        />
+      );
     case 'metadata':
       return <MetadataBlock key={index} items={section.items} />;
     case 'two-column':
@@ -146,11 +184,6 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
     if (detailView) detailView.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleBack = () => {
-    setIsExiting(true);
-    setTimeout(() => onBack(), 200);
-  };
-
   const handleProjectChange = (newProject: Project) => {
     onProjectChange(newProject);
     const detailView = document.querySelector('.fixed.inset-0');
@@ -183,23 +216,12 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
       <div className="px-4 sm:px-6 md:px-8 py-8 flex justify-center">
         <div
           className={[
-            'max-w-[700px] w-full transition-all duration-300 ease-out',
+            'max-w-[640px] w-full transition-all duration-300 ease-out',
             isVisible && !isExiting ? 'opacity-100 scale-100' : 'opacity-0 scale-[0.98]',
           ].join(' ')}
         >
-          {/* Back Button */}
-          <button
-            onClick={handleBack}
-            className="mb-8 flex items-center gap-2 text-gray-500 hover:text-black transition-all duration-200 group"
-          >
-            <div className="p-2 rounded-full bg-white border border-gray-200 group-hover:border-gray-300 transition-all shadow-sm group-hover:shadow-md group-hover:scale-110">
-              <ArrowLeft size={16} />
-            </div>
-            <span className="text-sm font-medium">Back</span>
-          </button>
-
           {/* Title + Subtitle */}
-          <div className="mb-8 pb-8">
+          <div className="mt-8 mb-8 pb-8">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h1 className="text-base font-bold text-gray-900">{project.title}</h1>
@@ -209,7 +231,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
               </div>
               {project.category && (
                 <span className="shrink-0 mt-1 px-3 py-1 rounded-lg bg-gray-100 text-gray-600 text-sm font-medium">
-                  {project.category === 'UI/UX' ? 'Design' : project.category}
+                  {project.category === 'UI/UX' ? 'Product Design' : project.category}
                 </span>
               )}
             </div>
@@ -217,10 +239,10 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
 
           {/* Flexible Sections */}
           <div className="flex flex-col">
-           {project.sections.map((section, i) => (
-           <div key={i} style={{ marginTop: i === 0 ? 0 : (section.gap ?? 40) }}>
-           {renderSection(section, i, project.title)}
-            </div>
+            {project.sections.map((section, i) => (
+              <div key={i} style={{ marginTop: i === 0 ? 0 : (section.gap ?? 40) }}>
+                {renderSection(section, i, project.title)}
+              </div>
             ))}
           </div>
 
