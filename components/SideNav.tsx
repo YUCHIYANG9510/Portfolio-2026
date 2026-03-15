@@ -3,19 +3,17 @@
 import React, { useState } from 'react';
 import { Home, User, FileText } from 'lucide-react';
 
-type Page = 'home' | 'about';
+type Page = 'home' | 'about' | 'resume';
 
 interface SideNavProps {
   currentPage: Page;
   onPageChange: (page: Page) => void;
-  resumeUrl?: string;
-  isProjectDetail?: boolean; // when true, no item is highlighted
+  isProjectDetail?: boolean;
 }
 
 export const SideNav: React.FC<SideNavProps> = ({
   currentPage,
   onPageChange,
-  resumeUrl = '#',
   isProjectDetail = false,
 }) => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -36,11 +34,11 @@ export const SideNav: React.FC<SideNavProps> = ({
       isActive: !isProjectDetail && currentPage === 'about',
     },
     {
-      id: 'resume',
+      id: 'resume' as const,
       label: 'Resume',
       icon: FileText,
-      onClick: () => window.open(resumeUrl, '_blank'),
-      isActive: false,
+      onClick: () => onPageChange('resume'),
+      isActive: !isProjectDetail && currentPage === 'resume',
     },
   ];
 

@@ -9,8 +9,9 @@ import { ProjectList } from '@/components/ProjectList';
 import { AnimatedContent } from '@/components/AnimatedContent';
 import { SideNav } from '@/components/SideNav';
 import { AboutPage } from '@/components/AboutPage';
+import { ResumePage } from '@/components/ResumePage';
 
-type Page = 'home' | 'about';
+type Page = 'home' | 'about' | 'resume';
 
 const Portfolio = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -74,23 +75,14 @@ const Portfolio = () => {
     return () => window.removeEventListener('resize', onResize);
   }, [selectedProject, hoveredId]);
 
-  // Nav page change — if in project detail and Home is tapped, go back to home list
   const handlePageChange = (page: Page) => {
-    if (page === 'home') {
-      // Always reset to home list view
-      setSelectedProject(null);
-      setHoveredId(null);
-      setViewMode('preview');
-    } else {
-      setSelectedProject(null);
-      setHoveredId(null);
-      setViewMode('preview');
-    }
+    setSelectedProject(null);
+    setHoveredId(null);
+    setViewMode('preview');
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'auto' });
   };
 
-  // Event handlers
   const handleProjectClick = (project: Project) => {
     setSelectedProject(project);
     setViewMode('detail');
@@ -135,14 +127,14 @@ const Portfolio = () => {
       <SideNav
         currentPage={currentPage}
         onPageChange={handlePageChange}
-        resumeUrl="https://your-resume-url.com"
         isProjectDetail={isProjectDetail}
       />
 
       {/* ── About Page ──────────────────────────────────────────── */}
-      {currentPage === 'about' && (
-        <AboutPage onCopyEmail={handleCopyEmail} emailCopied={emailCopied} />
-      )}
+      {currentPage === 'about' && <AboutPage />}
+
+      {/* ── Resume Page ─────────────────────────────────────────── */}
+      {currentPage === 'resume' && <ResumePage />}
 
       {/* ── Home Page ───────────────────────────────────────────── */}
       {currentPage === 'home' && (
@@ -162,10 +154,18 @@ const Portfolio = () => {
             <>
               <header className="bg-gray-50">
                 <div className="flex justify-center">
-                  <div className="w-full max-w-[700px] px-8 sm:px-11 pt-24 pb-16">
+                  <div className="w-full max-w-[700px] px-8 sm:px-11 pt-16 pb-16">
+                    <img
+                      src="/icon/daisy-logo.svg"
+                      alt=""
+                      width={80}
+                      height={80}
+                      draggable="false"
+                      className="mb-4"
+                    />
                     <div className="text-[20px] font-medium pb-3" style={{ color: '#1A1B1F' }}>Hello, I'm Daisy</div>
                     <p className="text-base leading-8 mb-5" style={{ color: '#737373' }}>
-                      I'm a <span className="font-bold">freelance designer</span> focused on web and product design. <br />I care deeply about details and quality, and I like to create designs that shape how people experience the world.
+                      A <span className="font-bold">web</span> and <span className="font-bold">product designer</span> who cares deeply about details and craft. <br />I love creating experiences that feel intuitive and visually polished.
                     </p>
                     <button
                       onClick={handleCopyEmail}

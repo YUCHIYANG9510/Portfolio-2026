@@ -126,8 +126,47 @@ const HighlightBlock: React.FC<{ emoji?: string; heading: string; body: string }
   </div>
 );
 
+const AppStoreButtonBlock: React.FC<{
+  href: string;
+  svgSrc?: string;
+  svgWidth?: number;
+  svgHeight?: number;
+}> = ({ href, svgSrc, svgWidth = 140, svgHeight = 48 }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-block transition-opacity duration-200 hover:opacity-80"
+  >
+    {svgSrc ? (
+      <img
+        src={svgSrc}
+        alt="Download on the App Store"
+        width={svgWidth}
+        height={svgHeight}
+        draggable="false"
+        style={{ display: 'block' }}
+      />
+    ) : (
+      <span className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-lg font-medium text-sm">
+        Download on the App Store
+      </span>
+    )}
+  </a>
+);
+
 const renderSection = (section: SectionBlock, index: number, projectTitle: string) => {
   switch (section.type) {
+    case 'app-store-button':
+      return (
+        <AppStoreButtonBlock
+          key={index}
+          href={section.href}
+          svgSrc={section.svgSrc}
+          svgWidth={section.svgWidth}
+          svgHeight={section.svgHeight}
+        />
+      );
     case 'media':
       return <MediaBlock key={index} src={section.src} alt={section.alt} title={projectTitle} />;
     case 'grid':
@@ -245,21 +284,6 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
               </div>
             ))}
           </div>
-
-          {/* iOS App Download Button */}
-          {project.category === 'Side Project' && project.iosAppUrl && (
-            <div className="mt-10">
-              <a
-                href={project.iosAppUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 group"
-              >
-                <AppleLogo size={18} className="group-hover:-translate-y-0.5 transition-transform" src="/apple-icon.svg" />
-                <span>Download on App Store</span>
-              </a>
-            </div>
-          )}
 
           {/* Back to Top */}
           <button

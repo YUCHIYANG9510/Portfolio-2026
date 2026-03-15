@@ -21,15 +21,13 @@ export const projects: Project[] = [
       {
         type: 'two-column',
         left: [
-          { label: 'My Role', value: 'Product Designer' },
-          { label: 'Team', value: 'Brian - Project Manager\nGracie - UX Designer\nRichard - VP Engineering' },
-          { label: 'Brief', value: 'Improve the visual consistency and classroom usability of BenQ\'s built-in whiteboard software to strengthen hardware differentiation.' },
+          { label: 'My Role', value: 'UI Designer' },
+          { label: 'Team', value: 'Brian Hsieh - Project Manager\nGracie Hsieh - UX Designer\nDaisy Yang - UI Designer\nRichard Ting - VP Engineering' },
           { label: 'Platforms', value: 'Web, Android, iOS' },
         ],
         right: {
           heading: 'Overview',
-          body: 'EZWrite 6 is a cross-platform interactive whiteboard software built into BenQ\'s large-format interactive displays, used in classrooms across the US, India, Germany, and beyond. The software sits at the core of BenQ\'s hardware value proposition — a well-designed whiteboard experience is what makes the display worth buying.\n\nI joined as the sole UI designer on a product that was already in market. Working alongside a UX designer responsible for wireframes and architecture, my scope covered visual design, design system ownership, and interaction design for large-screen environments — a context with physical constraints that most web or mobile designers never encounter.',
-        },
+          body: 'EZWrite 6 is a cross-platform interactive whiteboard software built into BenQ\'s large-format displays, designed to enhance classroom teaching experiences through an infinite canvas — before, during, and after class.\n\nThe software is central to BenQ\'s hardware value proposition: a compelling whiteboard experience is what makes the display worth buying. My role was to improve visual consistency, own the design system, and iterate on features — all while designing for the unique physical constraints of large-screen environments that most designers never encounter.'},
       },
       // Highlight callout
       {
@@ -67,27 +65,6 @@ export const projects: Project[] = [
         iconSize: 44, 
         subtitle: 'Establish a scalable, consistent product foundation',
         body: 'With a growing feature set and multiple contributors to the codebase and design files over time, the product needed a shared design language — one that could support faster iteration without accumulating visual debt.',
-        gap: 16,
-      },
-      // The Challenge
-      {
-        type: 'text',
-        heading: 'The Challenge',
-      },
-      {
-        type: 'text',
-        icon: '/icon/01.svg',  
-        iconSize: 44, 
-        subtitle: 'A fragmented design foundation',
-        body: 'EZWrite 6 had been shaped by multiple designers before me. There was no unified component library, no naming conventions, and no single source of truth. Every time I needed to design a new feature, I\'d spend close to thirty minutes just tracking down existing dialogs — checking what sizes existed, which had already been built by engineering, making sure I wasn\'t creating duplicates or introducing inconsistencies. The time spent searching routinely outweighed the time spent designing.',
-        gap: 16,
-      },
-      {
-        type: 'text',
-        icon: '/icon/02.svg',  
-        iconSize: 44, 
-        subtitle: 'A non-standard interaction environment',
-        body: 'This wasn\'t a typical screen. BenQ\'s interactive displays are wall-mounted panels — physically large, operated by teachers standing in front of a classroom. Buttons placed too high become unreachable. Toolbars that work fine on a laptop screen become obstacles when a teacher is mid-lesson, arms extended, students watching. The physical reality of the classroom shaped every layout decision in ways that standard mobile or web heuristics simply don\'t anticipate.',
         gap: 16,
       },
       // Key Features - Presentation Mode
@@ -137,11 +114,11 @@ export const projects: Project[] = [
   {
     id: 2,
     title: 'BenQ AMS',
-    subtitle: 'Account management system for schools at scale.',
+    subtitle: 'Account Management System — B2B SaaS Platform Redesign',
     year: '2024',
     category: 'UI/UX',
     url: 'https://example.com/design-system',
-    role: 'Product Designer',
+    role: 'UI Designer',
     date: '2024 - 2025',
     intro: 'AMS is a web-based account management system within BenQ Services, designed for both IT administrators and teachers.',
     tags: ['UI/UX'],
@@ -152,38 +129,111 @@ export const projects: Project[] = [
       {
         type: 'two-column',
         left: [
-          { label: 'My Role', value: 'Product Designer' },
-          { label: 'Timeline', value: '2024 – 2025' },
-          { label: 'Platforms', value: 'Web · Tablet · Mobile' },
+          { label: 'My Role', value: 'UI Designer' },
+          { label: 'Team', value: 'Barry Ho - Project Manager\nSammy Hong - UX Designer\nDaisy Yang - UI Designer\nWilson Chang - Front-end Engineer\nBernie Chen - Back-end Engineer' },
+          { label: 'Platform', value: 'Web' },
         ],
         right: {
           heading: 'Overview',
-          body: 'AMS is a web-based account management system within BenQ Services, designed for both IT administrators and teachers. It allows administrators to manage multiple accounts at scale, while enabling teachers to personalize their experience on interactive displays.\n\nI redesigned the latest version of AMS by introducing an existing design system and extending it across desktop, tablet, and mobile. The product reached 46,000 daily active users, and adoption of a unified design system helped double development efficiency.',
+          body: 'AMS Web is a role-based account management platform for BenQ Services, used by IT administrators and teachers to manage devices, accounts, and personalized settings across IFP displays.\n\nThe platform needed a full redesign — the interface had grown complex, lacked mobile support, and had no consistent design foundation. My role was to lead this overhaul, introducing a unified design system and restructuring the architecture to improve usability across devices and scale with the product long-term.',
         },
       },
       {
         type: 'highlight',
-        emoji: '📈',
-        heading: 'Impact',
-        body: '46,000 daily active users. Adopting a unified design system helped double development efficiency by improving consistency and reducing rework.',
+        emoji: '💡',
+        heading: 'Highlight',
+        body: 'The redesigned platform scaled to 46,000 daily active users and reduced development time by over 50% through the introduction of a systematic component library.',
       },
-      { type: 'media', src: '/ams/01_ams.jpg' },
-      { type: 'media', src: '/ams/02_ams.jpg' },
-      { type: 'grid', items: [{ src: '/ams/03_ams.jpg' }, { src: '/ams/04_ams.jpg' }] },
-      { type: 'media', src: '/ams/05_ams.jpg' },
-      { type: 'grid', items: [{ src: '/ams/06_ams.jpg' }, { src: '/ams/07_ams.jpg' }] },
-      { type: 'media', src: '/ams/08_ams.jpg' },
-      { type: 'media', src: '/ams/09_ams.jpg' },
+      { type: 'media', src: '/ams/cover_ams.jpg' },
+
+      // The Challenge
+      {
+        type: 'text',
+        heading: 'Challenge',
+      },
+      {
+        type: 'text', 
+        subtitle: 'The previous version of AMS Web had grown functionally but lacked structural clarity.',
+        body: '1. Configuration settings were scattered and difficult to navigate\n2. No mobile experience existed\n3. Visual inconsistency across BenQ software products',
+        gap: 16,
+      },
+
+       // Design Approach
+      {
+        type: 'text',
+        heading: 'Design Approach',
+      },
+      {
+        type: 'text',
+        icon: '/icon/01.svg',  
+        iconSize: 44, 
+        subtitle: 'Reducing Complexity',
+        body: 'Restructured the information architecture by reorganizing configuration settings into clear, categorized modules aligned with user intent rather than system structure.',
+        gap: 16,
+      },
+      {
+        type: 'media', src: '/ams/01_ams.jpg', alt: 'Information Architecture Redesign', gap: 16,
+      },
+      {
+        type: 'text',
+        icon: '/icon/02.svg',  
+        iconSize: 44, 
+        subtitle: 'Mobile Friendly',
+        body: 'Designed a responsive experience across desktop, tablet, and mobile — with device-appropriate layouts for each context.',
+        gap: 32,
+      },
+      {
+        type: 'media', src: '/ams/02_ams.jpg', alt: 'Mobile Experience', gap: 16,
+      },
+      {
+        type: 'text',
+        subtitle: 'Redefined task priorities by device context.',
+        body: '・Desktop supports editing-heavy workflows\n・Mobile prioritizes viewing and quick verification',
+        gap: 16,
+      },
+      {
+        type: 'media', src: '/ams/03_ams.jpg', alt: 'Mobile datetable', gap: 16,
+      },
+      {
+        type: 'text',
+        icon: '/icon/03.svg',  
+        iconSize: 44, 
+        subtitle: 'Experience Consistency',
+        body: 'Introduced and expanded an existing design system to unify visual language, interactions, and components across the entire platform.',
+        gap: 32,
+      },
+      {
+        type: 'media', src: '/ams/04_ams.jpg', alt: 'web app design system', gap: 16,
+      },
+      
+      // Results
+      {
+        type: 'text',
+        heading: 'Results',
+        body: '・46,000 global daily users (IT & teachers)\n・2x faster development through component reuse\n・Measurably improved visual consistency across the product',
+      },
+      {
+        type: 'media', src: '/ams/05_ams.jpg', alt: 'final design', gap: 16,
+      },
+      {
+        type: 'media', src: '/ams/06_ams.jpg', alt: 'final design', gap: 16,
+      },
+      {
+        type: 'media', src: '/ams/07_ams.jpg', alt: 'final design', gap: 16,
+      },
+      {
+        type: 'media', src: '/ams/08_ams.jpg', alt: 'final design', gap: 16,
+      },
     ],
   },
   {
     id: 3,
     title: 'BenQ AMS Files',
-    subtitle: 'Secure file access for shared classroom displays.',
+    subtitle: 'Redesigning File Access for the Classroom',
     year: '2024',
     category: 'UI/UX',
     url: 'https://example.com/dashboard',
-    role: 'Product Designer',
+    role: 'UI Designer',
     date: 'Aug 2024',
     intro: 'AMS Files is a built-in file management application on BenQ interactive displays.',
     tags: ['UI/UX'],
@@ -194,28 +244,137 @@ export const projects: Project[] = [
       {
         type: 'two-column',
         left: [
-          { label: 'My Role', value: 'Product Designer' },
-          { label: 'Year', value: 'Aug 2024' },
-          { label: 'Platform', value: 'Android · Large Display' },
+          { label: 'My Role', value: 'UI Designer' },
+          { label: 'Team', value: 'Barry Ho - Project Manager\nSammy Hong - UX Designer\nDaisy Yang - UI Designer\nHoward - Engineer' },
+          { label: 'Platform', value: 'Android' },
         ],
         right: {
           heading: 'Overview',
-          body: 'AMS Files is a built-in file management application on BenQ interactive displays, enabling secure, one-time access to personal cloud and network storage in shared environments.\n\nMy focus was on simplifying multi-source file access for classroom use—reducing cognitive load through clearer navigation, improved file search efficiency, and visual proposals aligned with the BenQ design system.',
+          body: 'AMS Files is a built-in file management app for BenQ interactive displays, enabling teachers to securely access personal cloud storage on shared classroom devices — without leaving files behind.\n\nMy role was to lead the redesign, focusing on simplifying the experience and establishing visual consistency through an expanded design system.',
         },
       },
-      { type: 'media', src: '/ams-files/01_ams-files.jpg' },
-      { type: 'media', src: '/ams-files/02_ams-files.jpg' },
-      {
-        type: 'grid',
-        items: [{ src: '/ams-files/03_ams-files.jpg' }, { src: '/ams-files/04_ams-files.jpg' }],
+     {
+        type: 'highlight',
+        emoji: '💡',
+        heading: 'Highlight',
+        body: 'A cleaner interface made file access faster and less effortful for teachers. Expanding the design system unified the product\'s visual language — and doubled development efficiency.',
       },
-      { type: 'media', src: '/ams-files/05_ams-files.jpg' },
-    ],
-  },
+      { type: 'media', src: '/ams-files/01_ams-files.jpg' },
+
+      // Design Decisions
+      {
+        type: 'text',
+        heading: 'Design Decisions',
+      },
+      
+      {
+        type: 'text',
+        icon: '/icon/01.svg',  
+        iconSize: 44, 
+        subtitle: 'Experience — Optimizing Teacher Workflows',
+        gap: 16,
+      },
+
+      // Search Files
+      {
+        type: 'text',
+        icon: '/icon/search-files.svg',  
+        iconSize: 44, 
+        subtitle: 'Searching Files',
+        body: 'The previous search experience was easy to overlook — the entry point wasn\'t prominent, and files showed too little information to identify at a glance.',
+        gap: 16,
+      },
+      
+      { type: 'media', src: '/ams-files/02_ams-files.jpg', gap: 16 },
+
+      {
+        type: 'text',
+        body: 'In the redesign, search was elevated in the hierarchy, filters were introduced to narrow results quickly, and thumbnail previews were added to make files immediately recognizable.',
+        gap: 16,
+      },
+
+      { type: 'media', src: '/ams-files/03_ams-files.jpg', gap: 16 },
+
+      {
+        type: 'text',
+        body: 'Introduced icon-based visual categorization for file types, making content scannable at a glance.',
+        gap: 16,
+      }, 
+
+      {
+      type: 'grid',
+      items: [
+        { src: '/ams-files/04_ams-files.jpg', alt: 'File Type Icons' },
+        { src: '/ams-files/05_ams-files.jpg', alt: 'File Type Icons' }
+      ],
+      gap: 16,
+      },
+
+      // Manage Files
+      {
+        type: 'text',
+        icon: '/icon/manage-files.svg',  
+        iconSize: 44, 
+        subtitle: 'Managing Files',
+        body: 'The legacy navigation structure didn\'t follow conventions familiar from mainstream file management platforms, and key information was often hidden.',
+        gap: 32,
+      },
+      {
+        type: 'text',
+        body: 'The redesign restructured the source panel in the sidebar, added visual storage indicators, and introduced starred file shortcuts — making everyday file management faster and more intuitive.',
+        gap: 4,
+      },
+      
+      {
+        type: 'media', src: '/ams-files/06_ams-files.jpg', alt: 'Manage files', gap: 16,
+      },
+      
+      // Edit Files
+      {
+        type: 'text',
+        icon: '/icon/edit-files.svg',  
+        iconSize: 44, 
+        subtitle: 'Editing Files',
+        body: 'Advanced editing actions were tucked away on the right side of the screen — fine for a laptop, but difficult to reach on a large interactive display.',
+        gap: 32,
+      },
+      
+      {
+        type: 'media', src: '/ams-files/07_ams-files.jpg', alt: 'Edit files', gap: 16,
+      },
+
+      {
+        type: 'text',
+        body: 'The redesign relocated these actions to a centered horizontal layout, better suited for large-screen interaction.',
+        gap: 16,
+      }, 
+
+      {
+        type: 'media', src: '/ams-files/08_ams-files.jpg', alt: 'Edit files', gap: 16,
+      },
+
+      {
+        type: 'text',
+        icon: '/icon/02.svg',  
+        iconSize: 44, 
+        subtitle: 'Consistency — Cross-platform Visual Alignment',
+        body: 'As BenQ\'s web apps gradually adopted a new Web App Design System, the IFP software began to feel visually disconnected from the broader product ecosystem. AMS Files became the first IFP app to align with the new design system — closing the visual gap between hardware and web experiences, and setting a precedent for future IFP redesigns.',
+        gap: 32,
+      },
+
+      {
+        type: 'media', src: '/ams-files/09_ams-files.jpg', alt: 'Edit files', gap: 16,
+      },
+
+      {
+        type: 'media', src: '/ams-files/10_ams-files.jpg', alt: 'Edit files', gap: 16,
+      },
+      ],
+    },
   {
     id: 4,
     title: 'The Pigeon Book',
-    subtitle: 'Everyday questions, answered.',
+    subtitle: 'Your daily guide to life\'s questions.',
     year: '2025',
     category: 'Side Project',
     url: 'https://shorturl.at/I1YPG',
@@ -224,10 +383,11 @@ export const projects: Project[] = [
     intro: 'The Pigeon Book is a self-initiated product I built from 0 to 1.',
     tags: ['Side Project'],
     bgColor: 'from-green-500 to-green-600',
-    image: '/pigeon-book/03_pigeon.mp4',
+    image: '/pigeon-book/08_pigeon.mp4',
     iosAppUrl: 'https://shorturl.at/I1YPG',
     previewBorderColor: '#F9FAFB',
     sections: [
+      
       {
         type: 'two-column',
         left: [
@@ -237,15 +397,90 @@ export const projects: Project[] = [
         ],
         right: {
           heading: 'Overview',
-          body: 'The Pigeon Book is a self-initiated product I built from 0 to 1, exploring how digital rituals can bring clarity and reflection into everyday decisions. Inspired by the idea of "asking the universe," the app answers life\'s small and big questions—work, relationships, the future, even what to eat.\n\nI independently designed and developed the product using a vibe-coding workflow. From concept validation to interaction design and monetization logic, I owned the entire product lifecycle end-to-end.',
+          body: 'The Pigeon Book is a self-initiated iOS app, live on the App Store. I designed and built it end-to-end — from the pigeon character to the UI to the App Store listing. Part creative outlet, part daily companion, part excuse to make something purely for the joy of it.',
         },
       },
+      {
+        type: 'app-store-button',
+        href: 'https://shorturl.at/I1YPG',
+        svgSrc: '/icon/app-store-download-btn.svg', // replace with your SVG path
+        svgWidth: 120,
+        svgHeight: 40,
+        gap: 6,
+      },
       { type: 'media', src: '/pigeon-book/01_pigeon.jpg' },
-      { type: 'media', src: '/pigeon-book/02_pigeon.jpg' },
-      { type: 'media', src: '/pigeon-book/03_pigeon.mp4' },
-      { type: 'media', src: '/pigeon-book/04_pigeon.jpg' },
-      { type: 'media', src: '/pigeon-book/05_pigeon.mp4' },
-      { type: 'media', src: '/pigeon-book/06_pigeon.jpg' },
+      // Why I Built This App
+      {
+        type: 'text',
+        heading: 'Why I Built This App',
+        body: 'Some questions don\'t have serious answers — and that\'s okay. I built this app as a creative outlet: a place to carry a little lightness, have fun, and hopefully make someone else smile. The pigeon character came from wanting to create something that felt personal, a little absurd, and genuinely mine.',
+      },
+
+      // Features
+      {
+        type: 'text',
+        heading: 'Features',
+      },
+      { type: 'media', src: '/pigeon-book/02_pigeon.jpg', gap: 16 },
+
+      // Ask the Pigeon
+      {
+        type: 'text',
+        icon: '/icon/01.svg',  
+        iconSize: 44, 
+        subtitle: 'Ask the Pigeon',
+        body: 'Got a problem? The pigeon has an answer. Ask any question about work, love, the future, lunch, or what to drink — and the universe will respond accordingly.',
+        gap: 32,
+      },
+      { type: 'media', src: '/pigeon-book/03_pigeon.mp4', gap: 12 },
+
+      // Daily Idiom
+      {
+        type: 'text',
+        icon: '/icon/02.svg',  
+        iconSize: 44, 
+        subtitle: 'Daily Idiom',
+        body: 'One Chinese idiom a day, delivered with a little wisdom and a lot of character. A small habit to accumulate knowledge — one perfectly distilled phrase at a time.',
+        gap: 32,
+      },
+      {
+      type: 'grid',
+      items: [
+        { src: '/pigeon-book/04_pigeon.jpg', alt: 'Daily Idiom' },
+        { src: '/pigeon-book/05_pigeon.jpg', alt: 'Daily Idiom' }
+      ],
+      gap: 16,
+      },
+
+      // 365-Day Countdown
+      {
+        type: 'text',
+        icon: '/icon/03.svg',  
+        iconSize: 44, 
+        subtitle: '365-Day Countdown',
+        body: 'A calendar that counts down the days of the year — a quiet daily reminder that today was once tomorrow, and tomorrow is worth looking forward to.',
+        gap: 32,
+      },
+      {
+        type: 'media', src: '/pigeon-book/06_pigeon.mp4', alt: '365-Day Countdown', gap: 16,
+      },
+      {
+        type: 'media', src: '/pigeon-book/07_pigeon.jpg', alt: '365-Day Countdown', gap: 16,
+      },
+
+      // How I Built It
+      {
+        type: 'text',
+        heading: 'How I Built It',
+        body: 'I designed and shipped the full app independently — concept, character design, UI, and App Store launch. I leveraged AI tools throughout the build, using vibe coding to move fast from idea to working product without getting stuck in the details. The visual language was built around the pigeon as a central character, balancing a playful tone with enough polish to feel like a finished product.',
+      },
+
+      // What I Learned
+      {
+        type: 'text',
+        heading: 'What I Learned',
+        body: 'This project was less about solving a user problem and more about the joy of making something. It reminded me that good design doesn\'t always need a brief — sometimes it just needs a curious pigeon and a question worth asking.',
+      },
     ],
   },
 
