@@ -3,15 +3,6 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from '@next/third-parties/google'
 
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>{children}</body>
-      <GoogleAnalytics gaId="G-M7RVN0E9HB" />  {/* 換成你的 ID */}
-    </html>
-  )
-}
-
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
@@ -33,6 +24,7 @@ export default function RootLayout({
       <body className="antialiased font-geist" suppressHydrationWarning>
         {children}
       </body>
+      <GoogleAnalytics gaId="G-M7RVN0E9HB" />
     </html>
   );
 }
