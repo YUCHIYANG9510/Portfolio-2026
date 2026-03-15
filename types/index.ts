@@ -10,6 +10,8 @@ export type SectionBlock =
       heading?: string;
       subtitle?: string;
       body?: string;
+      icon?: string;
+      iconSize?: number; 
       gap?: number;
     }
   | {
@@ -33,6 +35,14 @@ export type SectionBlock =
       emoji?: string;
       heading: string;
       body: string;
+      gap?: number;
+    }
+  | {
+      type: 'app-store-button';
+      href: string;
+      svgSrc?: string;
+      svgWidth?: number;
+      svgHeight?: number;
       gap?: number;
     };
 

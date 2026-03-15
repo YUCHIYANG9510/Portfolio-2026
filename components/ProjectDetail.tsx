@@ -278,7 +278,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
 
           {/* Flexible Sections */}
           <div className="flex flex-col">
-            {project.sections.map((section, i) => (
+          {(project.sections ?? []).map((section, i) => (
               <div key={i} style={{ marginTop: i === 0 ? 0 : (section.gap ?? 40) }}>
                 {renderSection(section, i, project.title)}
               </div>
