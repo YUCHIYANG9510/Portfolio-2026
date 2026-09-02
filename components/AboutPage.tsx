@@ -6,9 +6,9 @@ interface AboutPageProps {}
 
 export const AboutPage: React.FC<AboutPageProps> = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col animate-fade-in-up">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <div className="flex justify-center">
-        <div className="w-full max-w-[700px] px-8 sm:px-11 pt-24 pb-24">
+        <div className="w-full max-w-[700px] px-8 sm:px-11 pt-24 pb-24 animate-fade-in-up">
 
           {/* Two-column: Photo + About Text */}
           <div className="flex flex-col sm:flex-row gap-10">
