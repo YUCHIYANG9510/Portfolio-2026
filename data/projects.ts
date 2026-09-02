@@ -377,14 +377,14 @@ export const projects: Project[] = [
     subtitle: 'Your daily guide to life\'s questions.',
     year: '2025',
     category: 'Side Project',
-    url: 'https://shorturl.at/I1YPG',
+    url: 'https://apps.apple.com/au/app/%E8%A7%A3%E7%AD%94%E4%B9%8B%E6%9B%B8-%E9%B4%BF%E5%AD%90%E6%9C%89%E5%95%8F%E5%BF%85%E7%AD%94/id6748939885',
     role: 'Personal Project',
     date: 'Apr. 2025 - Present',
     intro: 'The Pigeon Book is a self-initiated product I built from 0 to 1.',
     tags: ['Side Project'],
     bgColor: 'from-green-500 to-green-600',
     image: '/pigeon-book/08_pigeon.mp4',
-    iosAppUrl: 'https://shorturl.at/I1YPG',
+    iosAppUrl: 'https://apps.apple.com/au/app/%E8%A7%A3%E7%AD%94%E4%B9%8B%E6%9B%B8-%E9%B4%BF%E5%AD%90%E6%9C%89%E5%95%8F%E5%BF%85%E7%AD%94/id6748939885',
     previewBorderColor: '#F9FAFB',
     sections: [
       
@@ -402,7 +402,7 @@ export const projects: Project[] = [
       },
       {
         type: 'app-store-button',
-        href: 'https://shorturl.at/I1YPG',
+        href: 'https://apps.apple.com/au/app/%E8%A7%A3%E7%AD%94%E4%B9%8B%E6%9B%B8-%E9%B4%BF%E5%AD%90%E6%9C%89%E5%95%8F%E5%BF%85%E7%AD%94/id6748939885',
         svgSrc: '/icon/app-store-download-btn.svg', // replace with your SVG path
         svgWidth: 120,
         svgHeight: 40,
